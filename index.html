@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Wero Quinielas - Jornada 10</title>
+    <style>
+        /* Asegurar que el fondo ocupe toda la pantalla */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Fondo futbolero ajustado */
+        body {
+            background-image: url("Fondo para pagina.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 20px;
+            min-height: 100vh;
+        }
+
+        /* Contenedor semi-transparente para resaltar texto */
+        .contenido {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        img {
+            margin-top: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 1.8em;
+        }
+
+        h1, h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            font-size: 2.0em; /* Cambia este valor para los títulos */
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 65px;
+        }
+
+        .header-container h2 {
+            margin-right: auto;
+            padding-left: 5px;
+        }
+        
+        /* Estilos para el nuevo contenedor de texto y botón de listas */
+        .listas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .listas-container p {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .listas-button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+
+        /* Estilos para el formulario del nombre */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 1em;
+        }
+
+        /* Contenedor de la quiniela con overlay de botones */
+        .quiniela-overlay-container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .quiniela-overlay-container img {
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Oculta los inputs de checkbox */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Círculos con posición absoluta y borde negro */
+        .radio-label {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid black;
+            cursor: pointer;
+            background-color: transparent;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        /* Estilo para los círculos seleccionados */
+        input[type="checkbox"]:checked + .radio-label {
+            background-color: red;
+            border-color: red;
+        }
+
+        /* Posicionamiento de cada círculo con porcentajes */
+        #partido1-L + .radio-label { left: 4.1%; top: 26.3%; }
+        #partido1-E + .radio-label { left: 47.5%; top: 26.3%; }
+        #partido1-V + .radio-label { left: 91.6%; top: 26.3%; }
+
+        #partido2-L + .radio-label { left: 4.1%; top: 34.7%; }
+        #partido2-E + .radio-label { left: 47.5%; top: 34.7%; }
+        #partido2-V + .radio-label { left: 91.6%; top: 34.7%; }
+
+        #partido3-L + .radio-label { left: 4.1%; top: 42.6%; }
+        #partido3-E + .radio-label { left: 47.5%; top: 42.6%; }
+        #partido3-V + .radio-label { left: 91.6%; top: 42.6%; }
+
+        #partido4-L + .radio-label { left: 4.1%; top: 51.7%; }
+        #partido4-E + .radio-label { left: 47.5%; top: 51.7%; }
+        #partido4-V + .radio-label { left: 91.6%; top: 51.7%; }
+
+        #partido5-L + .radio-label { left: 4.1%; top: 59.9%; }
+        #partido5-E + .radio-label { left: 47.5%; top: 59.9%; }
+        #partido5-V + .radio-label { left: 91.6%; top: 59.9%; }
+
+        #partido6-L + .radio-label { left: 4.1%; top: 68.3%; }
+        #partido6-E + .radio-label { left: 47.5%; top: 68.3%; }
+        #partido6-V + .radio-label { left: 91.6%; top: 68.3%; }
+
+        #partido7-L + .radio-label { left: 4.1%; top: 76.5%; }
+        #partido7-E + .radio-label { left: 47.5%; top: 76.5%; }
+        #partido7-V + .radio-label { left: 91.6%; top: 76.5%; }
+
+        #partido8-L + .radio-label { left: 4.1%; top: 84.6%; }
+        #partido8-E + .radio-label { left: 47.5%; top: 84.6%; }
+        #partido8-V + .radio-label { left: 91.6%; top: 84.6%; }
+
+        #partido9-L + .radio-label { left: 4.1%; top: 93.5%; }
+        #partido9-E + .radio-label { left: 47.5%; top: 93.5%; }
+        #partido9-V + .radio-label { left: 91.6%; top: 93.5%; }
+
+        .share-button {
+            background-color: #25D366;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+
+        .submit-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenido">
+        <h1>⚽ ¡Hola Gente Guapa! 🔥</h1>
+        <p>🔥 La jornada 10 ya está aquí, atrévete a participar y gana 🔥</p>
+
+        <form id="quinielaForm">
+            <div class="form-group">
+                <label for="nombre">🔥 Arranca con tu nombre aquí abajo, los partidos te están esperando⚽</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Escribe aquí tu nombre">
+            </div>
+
+            <div class="header-container">
+                <h2 contenteditable="true">🏆Reta a tu compa y ve quién gana⚽</h2>
+                <a href="https://wa.me/?text=¡Anímate a participar en la quiniela de El Wero! (Pon el enlace de tu página aquí)" target="_blank" class="share-button">
+                    Retar
+                </a>
+            </div>
+
+            <div class="listas-container">
+                <p>⚡ Dale clic y descubre cómo van las listas📝 </p>
+                <a href="#" class="listas-button">Listas</a>
+            </div>
+
+            <div class="quiniela-overlay-container">
+                <img src="Jornada10.png" alt="Quiniela Jornada 10">
+
+                                <input type="checkbox" id="partido1-L" name="partido1" value="L">
+                <label for="partido1-L" class="radio-label"></label>
+                <input type="checkbox" id="partido1-E" name="partido1" value="E">
+                <label for="partido1-E" class="radio-label"></label>
+                <input type="checkbox" id="partido1-V" name="partido1" value="V">
+                <label for="partido1-V" class="radio-label"></label>
+
+                                <input type="checkbox" id="partido2-L" name="partido2" value="L">
+                <label for="partido2-L" class="radio-label"></label>
+                <input type="checkbox" id="partido2-E" name="partido2" value="E">
+                <label for="partido2-E" class="radio-label"></label>
+                <input type="checkbox" id="partido2-V" name="partido2" value="V">
+                <label for="partido2-V" class="radio-label"></label>
+
+                                <input type="checkbox" id="partido3-L" name="partido3" value="L">
+                <label for="partido3-L" class="radio-label"></label>
+                <input type="checkbox" id="partido3-E" name="partido3" value="E">
+                <label for="partido3-E" class="radio-label"></label>
+                <input type="checkbox" id="partido3-V" name="partido3" value="V">
+                <label for="partido3-V" class="radio-label"></label>
+
+                                <input type="checkbox" id="partido4-L" name="partido4" value="L">
+                <label for="partido4-L" class="radio-label"></label>
+                <input type="checkbox" id="partido4-E" name="partido4" value="E">
+                <label for="partido4-E" class="radio-label"></label>
+                <input type="checkbox" id="partido4-V" name="partido4" value="V">
+                <label for="partido4-V" class="radio-label"></label>
+
+                                <input type="checkbox" id="partido5-L" name="partido5" value="L">
+                <label for="partido5-L" class="radio-label"></label>
+                <input type="checkbox" id="partido5-E" name="partido5" value="E">
+                <label for="partido5-E" class="radio-label"></label>
+                <input type="checkbox" id="partido5-V" name="partido5" value="V">
+                <label for="partido5-V" class="radio-label"></label>
+
+                                <input type="checkbox" id="partido6-L" name="partido6" value="L">
+                <label for="partido6-L" class="radio-label"></label>
+                <input type="checkbox" id="partido6-E" name="partido6" value="E">
+                <label for="partido6-E" class="radio-label"></label>
+                <input type="checkbox" id="partido6-V" name="partido6" value="V">
+                <label for="partido6-V" class="radio-label"></label>
+
+                                <input type="checkbox" id="partido7-L" name="partido7" value="L">
+                <label for="partido7-L" class="radio-label"></label>
+                <input type="checkbox" id="partido7-E" name="partido7" value="E">
+                <label for="partido7-E" class="radio-label"></label>
+                <input type="checkbox" id="partido7-V" name="partido7" value="V">
+                <label for="partido7-V" class="radio-label"></label>
+
+                                <input type="checkbox" id="partido8-L" name="partido8" value="L">
+                <label for="partido8-L" class="radio-label"></label>
+                <input type="checkbox" id="partido8-E" name="partido8" value="E">
+                <label for="partido8-E" class="radio-label"></label>
+                <input type="checkbox" id="partido8-V" name="partido8" value="V">
+                <label for="partido8-V" class="radio-label"></label>
+
+                                <input type="checkbox" id="partido9-L" name="partido9" value="L">
+                <label for="partido9-L" class="radio-label"></label>
+                <input type="checkbox" id="partido9-E" name="partido9" value="E">
+                <label for="partido9-E" class="radio-label"></label>
+                <input type="checkbox" id="partido9-V" name="partido9" value="V">
+                <label for="partido9-V" class="radio-label"></label>
+            </div>
+
+            <p id="precio-final">Total de quinielas: 1 | Precio: $30</p>
+            <button type="submit" class="submit-button">Enviar Quiniela</button>
+        </form>
+    </div>
+</body>
+</html>
