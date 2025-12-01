@@ -70,15 +70,15 @@ imageHeight: 150,
 });
 }
 const partidos = [
-"Juarez vs Toluca",
-"Monterrey vs America",
-"Tijuana vs Tigres",
-"Chivas vs Cruz Azul",
-"America vs Monterrey",
-"Toluca vs Juarez",
-"Tigres vs Tijuana",
-"Chelsea vs Arsenal",
-"Cruz Azul vs Chivas"
+  "Monterrey vs Toluca",
+  "Cruz Azul vs Tigres",
+  "Aston Villa vs Arsenal",
+  "Stuttgart vs Bayern",
+  "Real Betis vs Barcelona",
+  "Toluca vs Monterrey",
+  "Napoli vs Juventus",
+  "Real M. vs Celta",
+  "Tigres vs Cruz Azul"
 ];
 const topPositions = ["28.0%", "36.4%", "45.0%", "53.3%", "62.0%", "70.3%", "78.7%", "87.5%", "96.0%"];
 const circuloContenedores = document.querySelectorAll('.circulo-contenedor');
