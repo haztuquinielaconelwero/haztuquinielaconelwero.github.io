@@ -1,0 +1,476 @@
+/*Modifica el video */
+#bg-video {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: -1;
+}
+/*Modifica el contenido */
+body, html {
+margin: 0px;
+padding: 0px;
+font-family: sans-serif;
+overflow-x: hidden;
+overflow-y: auto;
+}
+/*Modifica el contenido */
+body {
+display: flex;
+justify-content: center;
+align-items: flex-start;
+min-height: 100vh;
+}
+/*Modifica el contenedor negro*/
+.content {
+background-color: rgba(0, 0, 0, 0.6);
+color: white;
+padding: 5px 20px;
+text-align: center;
+position: relative;
+z-index: 1;
+width: 95%;
+max-width: 500px;
+margin: 0 auto;
+}
+/*Modifica los textos que son titulos*/
+.content h1 {
+margin-block-start: 0;
+margin-block-end: -5px;
+font-size: 2.4em;
+text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+}
+/*Modifica los textos que son parrafos*/
+.content p {
+margin-block-start: 0;
+margin-block-end: 0;
+font-size: 1.0em;
+margin-top: 0.5px;
+}
+/*Modifica el texto empieza con tu nombre*/
+.name {
+margin-block-start: 0px;
+margin-block-end: 0px;
+font-size: 4.0em;
+font-weight: bold;
+}
+/*Modifica margenes empieza con tu nombre*/
+.name-container {
+margin-top: 0.5px;
+margin-bottom: 0.5px;
+}
+/*Modifica el texto donde el usuario pone su nombre*/
+#nameInput {
+background-color: rgba(0, 0, 0, 0.7);
+border: 3px solid #C00030;
+color: white;
+border-radius: 25px;
+padding: 8px 16px;
+font-size: 1.2em;
+margin-top: 0.5px;
+width: 90%;
+max-width: 300px;
+text-align: center;
+transition: all 0.3s ease;
+font-weight: bold;
+}
+/*Modifica el texto donde el usuario pone su nombre*/
+#nameInput::placeholder {
+color: white;
+font-weight: normal;
+}
+/*Modifica el texto donde el usuario pone su nombre*/
+#nameInput:focus {
+outline: none;
+background-color: rgba(176, 0, 32, 0.7);
+box-shadow: 0 0 15px rgba(211, 47, 47, 0.7);
+}
+/*Modifica los bloques Reta a tu compa y Descubre como van las listas*/
+.action-button {
+border: none;
+border-radius: 25px;
+background-color: transparent;
+color: white;
+padding: 4px 8px;
+font-size: 1em;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s ease;
+width: 25%;
+max-width: 300px;
+margin-top: 0.0px;
+}
+/*Modifica los bloques Reta a tu compa y Descubre como van las listas*/
+.challenge-container, .list-container {
+margin-top: -1.5px;
+}
+/*Modifica los bloques Reta a tu compa y Descubre como van las listas*/
+.challenge-container p, .list-container p {
+margin-bottom: -1.5px;
+font-size: 1.2em;
+}
+/*Modifica los bloques Reta a tu compa y Descubre como van las listas*/
+.action-button:hover {
+transform: scale(1.05);
+box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+/*Modifica los bloques Reta a tu compa y Descubre como van las listas*/
+.btn-green {
+background-color: #28a745;
+border: 3px solid #218838;
+color: white;
+padding: 4px 8px;
+border-radius: 25px;
+font-weight: bold;
+font-size: 1em;
+cursor: pointer;
+transition: all 0.3s ease;
+animation: parpadeoVerde 1.5s infinite;
+margin-top: -1.5px;
+}
+/*Modifica los bloques Reta a tu compa y Descubre como van las listas*/
+.btn-green:hover {
+background-color: #218838;
+border-color: #1e7e34;
+}
+/*Modifica los bloques Reta a tu compa y Descubre como van las listas*/
+.btn-blue {
+background-color: #007bff;
+border: 3px solid #0069d9;
+color: white;
+padding: 4px 8px;
+border-radius: 25px;
+font-weight: bold;
+font-size: 1em;
+cursor: pointer;
+transition: all 0.3s ease;
+animation: parpadeoAzul 1.5s infinite;
+margin-top: -1.5px;
+}
+/*Modifica los bloques Reta a tu compa y Descubre como van las listas*/
+.btn-blue:hover {
+background-color: #0069d9;
+border-color: #005cbf;
+}
+/*Modifica los parapdeos de los bloques Reta a tu compa y Descubre como van las listas*/
+@keyframes parpadeoVerde {
+0% { box-shadow: 0 0 5px #28a745; }
+50% { box-shadow: 0 0 20px #00ff66; }
+100% { box-shadow: 0 0 5px #28a745; }
+}
+/*Modifica los parapdeos de los bloques Reta a tu compa y Descubre como van las listas*/
+@keyframes parpadeoAzul {
+0% { box-shadow: 0 0 5px #007bff; }
+50% { box-shadow: 0 0 20px #33ccff; }
+100% { box-shadow: 0 0 5px #007bff; }
+}
+/*Modifica el espacio de la quiniela*/
+.quiniela-actions {
+margin-top: 1px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+padding-bottom: 0.5px;
+}
+/*Modifica el espacio de la quiniela*/
+.quiniela-container {
+position: relative;
+display: inline-block;
+}
+/*Modifica los botones de Crear quiniela, Guardar quiniela, y Enviar quiniela*/
+.btn-quiniela {
+background-color: rgba(0, 0, 0, 0.7);
+border: 3px solid #C00030;
+color: white;
+border-radius: 25px;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s ease;
+animation: parpadeoRojo 1.5s infinite;
+padding-bottom: 0px;
+}
+/*Modifica los botones de Crear quiniela, Guardar quiniela, y Enviar quiniela*/
+.btn-quiniela:hover {
+transform: scale(1.05);
+box-shadow: 0 0 25px #D32F2F;
+}
+/*Modifica los botones de Crear quiniela, Guardar quiniela, y Enviar quiniela*/
+.btn-large {
+font-size: 1.2em;
+padding: 10px 20px;
+width: 80%;
+max-width: 250px;
+margin-top: 0px;
+}
+/*Modifica los botones de Crear quiniela, Guardar quiniela, y Enviar quiniela*/
+.btn-medium {
+font-size: 1.2em;
+padding: 10px 20px;
+width: 60%;
+max-width: 250px;
+margin-top: 0px;
+}
+/*Modifica los botones de Crear quiniela, Guardar quiniela, y Enviar quiniela*/
+.btn-small {
+font-size: 1.1em;
+padding: 10px 20px;
+width: 50%;
+max-width: 250px;
+margin-top: -7px;
+}
+/*Modifica los botones de Crear quiniela, Guardar quiniela, y Enviar quiniela*/
+@keyframes parpadeoRojo {
+0% { box-shadow: 0 0 5px #D32F2F; }
+50% { box-shadow: 0 0 20px #ff4c4c; }
+100% { box-shadow: 0 0 5px #D32F2F; }
+}
+/*Modifica los botones flotantes de Whats app y Facebook*/
+.floating-btn {
+position: fixed;
+bottom: 5px;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 30px;
+color: white;
+text-decoration: none;
+box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+transition: all 0.3s ease;
+z-index: 100;
+}
+/*Modifica los botones flotantes de Whats app y Facebook*/
+.floating-btn:hover {
+transform: scale(1.1);
+}
+/*Modifica los botones flotantes de Whats app y Facebook*/
+.whatsapp {
+left: 5px;
+background-color: #25D366;
+animation: brilloVerde 2s infinite;
+}
+/*Modifica los botones flotantes de Whats app y Facebook*/
+.facebook {
+right: 5px;
+background-color: #1877F2;
+animation: brilloAzul 2s infinite;
+}
+/*Modifica los botones flotantes de Whats app y Facebook*/
+@keyframes brilloVerde {
+0%, 100% {
+box-shadow: 0 0 5px #25D366, 0 0 10px #25D366, 0 0 15px #25D366;
+}
+50% {
+box-shadow: 0 0 20px #fff, 0 0 30px #25D366, 0 0 40px #25D366;
+}
+}
+@keyframes brilloAzul {
+0%, 100% {
+box-shadow: 0 0 5px #1877F2, 0 0 10px #1877F2, 0 0 15px #1877F2;
+}
+50% {
+box-shadow: 0 0 20px #fff, 0 0 30px #1877F2, 0 0 40px #1877F2;
+}
+}
+/*Modifica los circulos para seleccionar dentro de la quiniela*/
+.circulos-grid {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+/*Modifica los circulos para seleccionar dentro de la quiniela*/
+.circulo-contenedor {
+width: 6%;
+height: 4%;
+display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+cursor: pointer;
+transform: translate(-50%, -50%);
+}
+/*Modifica los circulos para seleccionar dentro de la quiniela*/
+.circulo {
+width: 100%;
+height: 100%;
+border: 3px solid transparent;
+border-radius: 50%;
+position: relative;
+transition: all 0.3s ease;
+}
+/*Modifica los circulos para seleccionar dentro de la quiniela*/
+.circulo .guion {
+position: absolute;
+top: 50%;
+height: 5px;
+background-color: transparent;
+transform: translateY(-50%);
+transition: all 0.3s ease;
+}
+/*Modifica los circulos para seleccionar dentro de la quiniela*/
+.izquierda .circulo .guion {
+left: 50%;
+width: 810%;
+}
+.centro .circulo .guion {
+left: -150%;
+right: -150%;
+}
+/*Modifica los circulos para seleccionar dentro de la quiniela*/
+.derecha .circulo .guion {
+right: 50%;
+width: 810%;
+}
+/*Modifica los circulos para seleccionar dentro de la quiniela*/
+.circulo.selected {
+background-color: rgba(0, 0, 0, 0.9);
+border-color: #C00030;
+animation: parpadeoRojo 1.5s infinite;
+}
+/*Modifica los circulos para seleccionar dentro de la quiniela*/
+.circulo.selected .guion {
+background-color: #C00030;
+}
+#savedQuinielasContainer {
+width: 100%;
+margin-top: 1.5px;
+display: flex;
+flex-direction: column;
+gap: 15px;
+max-width: 300px; 
+margin-left: auto;
+margin-right: auto;
+}
+.saved-quiniela {
+background: linear-gradient(45deg, rgba(10, 20, 40, 0.8), rgba(30, 10, 20, 0.8));
+border: 2px solid #C00030;
+border-radius: 15px;
+padding: 5px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+backdrop-filter: blur(5px);
+box-shadow: 0 0 15px rgba(211, 47, 47, 0.5);
+animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(-10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.quiniela-info {
+text-align: left; 
+flex: 1;
+}
+.quiniela-info .name {
+font-size: 1.3em;
+font-weight: bold;
+color: #ffc107;
+margin: 0 0 5px 0;
+text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+text-align: center;
+}
+.quiniela-info .prediction {
+font-size: 0.9em;
+margin: 0;
+color: #f0f0f0;
+}
+.delete-btn {
+background-color: transparent;
+border: 2px solid #ff4c4c;
+color: #ff4c4c;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+cursor: pointer;
+font-size: 18px;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: all 0.3s ease;
+}
+.delete-btn:hover {
+background-color: #ff4c4c;
+color: white;
+transform: scale(1.1) rotate(90deg);
+box-shadow: 0 0 15px #ff4c4c;
+}
+#spinner-container {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+z-index: 1001;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+.spinner {
+border: 8px solid #f3f3f3;
+border-top: 8px solid #C00030;
+border-radius: 50%;
+width: 60px;
+height: 60px;
+animation: spin 1s linear infinite;
+}
+.spinner-message {
+color: white;
+font-size: 1.5em;
+margin-top: 20px;
+font-weight: bold;
+text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+#success-overlay {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #28a745;
+z-index: 1000;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+color: white;
+padding: 20px;
+box-sizing: border-box;
+}
+#success-overlay h2 {
+font-size: 2em;
+margin-bottom: 15px;
+}
+#success-overlay p {
+font-size: 1.2em;
+margin-bottom: 30px;
+}
+#whatsapp-redirect-btn {
+text-decoration: none;
+display: inline-block;
+line-height: normal;
+background-color: #fff;
+color: #25D366;
+border: 2px solid #fff;
+font-size: 1.5em;
+padding: 15px 30px;
+border-radius: 30px;
+font-weight: bold;
+transition: transform 0.2s;
+}
+#whatsapp-redirect-btn:hover {
+transform: scale(1.05);
+}
